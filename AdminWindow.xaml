@@ -1,0 +1,49 @@
+﻿<Window x:Class="WpfApp2.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="Панель администратора" Height="500" Width="850" Loaded="Window_Loaded">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Список рейсов -->
+        <DataGrid x:Name="AdminFlightsGrid" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="AdminFlightsGrid_SelectionChanged" Margin="5">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Рейс" Binding="{Binding FlightNumber}" Width="*"/>
+                <DataGridTextColumn Header="Откуда" Binding="{Binding DepartureCity}" Width="*"/>
+                <DataGridTextColumn Header="Куда" Binding="{Binding ArrivalCity}" Width="*"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Price}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Форма редактирования / создания -->
+        <StackPanel Grid.Column="1" Margin="10">
+            <TextBlock Text="Управление рейсом" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Номер рейса:"/>
+            <TextBox x:Name="NumTxt" Margin="0,5"/>
+
+            <TextBlock Text="Город вылета:"/>
+            <TextBox x:Name="DepTxt" Margin="0,5"/>
+
+            <TextBlock Text="Город прилета:"/>
+            <TextBox x:Name="ArrTxt" Margin="0,5"/>
+
+            <TextBlock Text="Цена:"/>
+            <TextBox x:Name="PriceTxt" Margin="0,5"/>
+
+            <TextBlock Text="ID Самолета:"/>
+            <TextBox x:Name="PlaneIdTxt" Margin="0,5"/>
+
+            <Button Content="Добавить" Click="Add_Click" Margin="0,10,0,5" Background="Green" Foreground="White"/>
+            <Button Content="Изменить" Click="Update_Click" Margin="0,0,0,5" Background="Orange" Foreground="White"/>
+            <Button Content="Удалить" Click="Delete_Click" Background="Red" Foreground="White"/>
+        </StackPanel>
+    </Grid>
+</Window>
